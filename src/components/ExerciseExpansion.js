@@ -14,6 +14,17 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        // backgroundColor: "red"
+    },
+    difficulty: {
+        backgroundColor: "red",
+        borderRadius: 4
+
+    },
+    exercise: {
+        marginBottom: 15,
+        borderRadius: 4,
+        boxShadow: "10px"
     },
 }));
 
@@ -22,11 +33,12 @@ export default function SimpleExpansionPanel() {
 
     return (
         <div className={classes.root}>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.exercise}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.difficulty}
                 >
                     <Typography className={classes.heading}>Exercise 1</Typography>
                 </ExpansionPanelSummary>
@@ -37,11 +49,12 @@ export default function SimpleExpansionPanel() {
           </Typography>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.exercise}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.difficulty}
                 >
                     <Typography className={classes.heading}>Exercise 2</Typography>
                 </ExpansionPanelSummary>
@@ -52,11 +65,12 @@ export default function SimpleExpansionPanel() {
           </Typography>
                 </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel>
+            <ExpansionPanel className={classes.exercise}>
                 <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    className={classes.difficulty}
                 >
                     <Typography className={classes.heading}>Exercise 3</Typography>
                 </ExpansionPanelSummary>

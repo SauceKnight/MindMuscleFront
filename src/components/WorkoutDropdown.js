@@ -17,7 +17,9 @@ export default function WorkoutDropdown(props) {
 
     const handleChange = (e) => {
         setWorkout(e.value)
-        props.props("test")
+        props.props(e.value)
+        // console.log(props)
+        // console.log(props)
         // console.log("test")
     }
 

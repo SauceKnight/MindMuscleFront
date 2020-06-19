@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Route } from 'react-router-dom'
 import TopNav from './components/TopNav'
 import WorkoutDropdown from './components/WorkoutDropdown'
 import ExerciseExpansion from './components/ExerciseExpansion'
@@ -47,6 +47,12 @@ function App() {
     // modelViewer.setFieldOfView("0deg 0deg")
   }
 
+  const handleClickLeg = (modelViewer) => {
+    history.push('/Leg')
+
+    // modelViewer.setFieldOfView("0deg 0deg")
+  }
+
   const setValue = (plan) => {
     updateValue(plan);
   }
@@ -69,6 +75,7 @@ function App() {
           camera-controls
           alt="A 3D model of a human" style={{ width: 100 + '%', height: 100 + '%' }}>
           <button slot="hotspot-chest" data-position="-0.38579194181026033 7.483364059519481 0.7423148470799796" data-normal="0 0 1" data-visibility-attribute="visible" onClick={handleClick}></button>
+          <button slot="hotspot-chest" data-position="0 0 0" data-normal="0 0 1" data-visibility-attribute="visible" onClick={handleClickLeg}></button>
 
         </model-viewer>
 
@@ -76,7 +83,9 @@ function App() {
       <main className={classes.content}>
         <Toolbar />
         <p>Hello</p>
-        <WorkoutDropdown props={setValue} />
+        {/* <WorkoutDropdown props={setValue} /> */}
+        <Route exact path="/:musclename"
+          render={(props) => <WorkoutDropdown props={setValue} />} />
         {/* <WorkoutDropdown props={setValue}/> */}
         {Exercise()}
         {/* <ExerciseExpansion /> */}
