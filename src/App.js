@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import TopNav from './components/TopNav'
 import WorkoutDropdown from './components/WorkoutDropdown'
@@ -39,6 +39,7 @@ function App() {
   //   "0deg 60deg -2m",
   //   modelViewer.cameraOrbit
   // ];
+  const [value, updateValue] = useState("");
 
   const handleClick = (modelViewer) => {
     history.push('/Chest')
@@ -46,8 +47,15 @@ function App() {
     // modelViewer.setFieldOfView("0deg 0deg")
   }
 
+  const setValue = (plan) => {
+    updateValue(plan);
+  }
 
-
+  const Exercise = (e) => {
+    if (value) {
+      return (<ExerciseExpansion />)
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -59,7 +67,7 @@ function App() {
         <Toolbar />
         <model-viewer id="model-demo" src="/3dModel/HumanModel.glb"
           camera-controls
-          alt="A 3D model of an astronaut" style={{ width: 100 + '%', height: 100 + '%' }}>
+          alt="A 3D model of a human" style={{ width: 100 + '%', height: 100 + '%' }}>
           <button slot="hotspot-chest" data-position="-0.38579194181026033 7.483364059519481 0.7423148470799796" data-normal="0 0 1" data-visibility-attribute="visible" onClick={handleClick}></button>
 
         </model-viewer>
@@ -68,10 +76,10 @@ function App() {
       <main className={classes.content}>
         <Toolbar />
         <p>Hello</p>
-        <WorkoutDropdown />
+        <WorkoutDropdown props={setValue} />
         {/* <WorkoutDropdown props={setValue}/> */}
-        {/* {value && ExerciseExpansion} */}
-        <ExerciseExpansion />
+        {Exercise()}
+        {/* <ExerciseExpansion /> */}
       </main>
     </div>
   );
