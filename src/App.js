@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import TopNav from './components/TopNav'
 import WorkoutDropdown from './components/WorkoutDropdown'
+import ExerciseExpansion from './components/ExerciseExpansion'
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import { Toolbar } from '@material-ui/core';
@@ -68,7 +69,9 @@ function App() {
         <Toolbar />
         <p>Hello</p>
         <WorkoutDropdown />
-
+        {/* <WorkoutDropdown props={setValue}/> */}
+        {/* {value && ExerciseExpansion} */}
+        <ExerciseExpansion />
       </main>
     </div>
   );
