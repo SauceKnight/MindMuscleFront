@@ -1,16 +1,16 @@
 import {
     RETRIEVE_MUSCLE
-} from "./muscleActions";
+} from "../Muscle/muscleActions";
 
 const initialState = {
-    workoutplans: []
+
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case RETRIEVE_MUSCLE:
             return {
-                ...action.payload.data,
+                ...action.payload.WorkoutPlans,
             };
 
         default:

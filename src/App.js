@@ -45,14 +45,15 @@ function App() {
   // ];
   const [value, updateValue] = useState("");
 
-  const handleClick = (modelViewer) => {
-    dispatch(getMuscle("Chest"))
+  const handleClick = (id) => {
+    dispatch(getMuscle(id))
     history.push('/Chest')
 
     // modelViewer.setFieldOfView("0deg 0deg")
   }
 
-  const handleClickLeg = (modelViewer) => {
+  const handleClickLeg = (id) => {
+    dispatch(getMuscle(id))
     history.push('/Leg')
 
     // modelViewer.setFieldOfView("0deg 0deg")
@@ -79,8 +80,8 @@ function App() {
         <model-viewer id="model-demo" src="/3dModel/HumanModel.glb"
           camera-controls
           alt="A 3D model of a human" style={{ width: 100 + '%', height: 100 + '%' }}>
-          <button slot="hotspot-chest" data-position="-0.38579194181026033 7.483364059519481 0.7423148470799796" data-normal="0 0 1" data-visibility-attribute="visible" onClick={handleClick}></button>
-          <button slot="hotspot-chest" data-position="0 0 0" data-normal="0 0 1" data-visibility-attribute="visible" onClick={handleClickLeg}></button>
+          <button slot="hotspot-chest" data-position="-0.38579194181026033 7.483364059519481 0.7423148470799796" data-normal="0 0 1" data-visibility-attribute="visible" onClick={() => handleClick(1)}></button>
+          <button slot="hotspot-leg" data-position="0 0 0" data-normal="0 0 1" data-visibility-attribute="visible" onClick={() => handleClickLeg(2)}></button>
 
         </model-viewer>
 

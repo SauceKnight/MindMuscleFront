@@ -9,9 +9,9 @@ export const fetchMuscle = (muscle) => {
 };
 
 
-export const getMuscle = (musclename) => async (dispatch) => {
+export const getMuscle = (muscleid) => async (dispatch) => {
     const response = await fetch(
-        `http://localhost:5000/${musclename}`
+        `http://localhost:5000/${muscleid}`
     );
     if (response.ok) {
         const res = await response.json();

@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { getMuscle } from '../Muscle/muscleActions'
+import { useHistory } from 'react-router-dom';
 
 export default function WorkoutDropdown(props) {
-    const options = [
-        'one', 'two', 'three'
-    ];
+    const workoutplans = useSelector(state => state.Muscle.workoutplans)
+    const workouts = useSelector(state => state.WorkoutPlans)
+    const options = workoutplans.map(name => workouts[name].name);
+    const history = useHistory()
+
     const [workout, setWorkout] = useState("Select a workout");
+
+    useEffect(() => {
+        setWorkout("Select a workout")
+        props.props("")
+    }, [workouts]);
 
     const handleChange = (e) => {
         setWorkout(e.value)
-        props.props(e.value)
+        props.props(workouts[e.value].id)
+        console.log(workouts[e.value].id)
         // console.log(props)
         // console.log(props)
         // console.log("test")
     }
-
     return (
         <Dropdown options={options} value={workout} onChange={handleChange} placeholder="Select an option" />
     );
+
 }
