@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import TopNav from './components/TopNav'
 import WorkoutDropdown from './components/WorkoutDropdown'
 import ExerciseExpansion from './components/ExerciseExpansion'
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import { Toolbar } from '@material-ui/core';
+import { getMuscle } from './Muscle/muscleActions'
 
 const drawerWidth = "50%"
 
@@ -35,6 +37,8 @@ function App() {
   const modelViewer = document.querySelector('#model-demo');
   const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const muscle = useSelector(state => state.Muscle)
   // const orbitCycle = [
   //   "0deg 60deg -2m",
   //   modelViewer.cameraOrbit
@@ -42,6 +46,7 @@ function App() {
   const [value, updateValue] = useState("");
 
   const handleClick = (modelViewer) => {
+    dispatch(getMuscle("Chest"))
     history.push('/Chest')
 
     // modelViewer.setFieldOfView("0deg 0deg")
@@ -82,7 +87,8 @@ function App() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <p>Hello</p>
+        <h1>{muscle.name}</h1>
+        <p>{muscle.description}</p>
         {/* <WorkoutDropdown props={setValue} /> */}
         <Route exact path="/:musclename"
           render={(props) => <WorkoutDropdown props={setValue} />} />
