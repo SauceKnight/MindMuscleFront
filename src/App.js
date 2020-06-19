@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import TopNav from './components/TopNav'
+import WorkoutDropdown from './components/WorkoutDropdown'
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 import { Toolbar } from '@material-ui/core';
@@ -66,6 +67,7 @@ function App() {
       <main className={classes.content}>
         <Toolbar />
         <p>Hello</p>
+        <WorkoutDropdown />
 
       </main>
     </div>
