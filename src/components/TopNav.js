@@ -1,50 +1,23 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    drawerContainer: {
-        overflow: 'auto',
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-}));
+import SiteInfo from './SiteInfo';
+import { Link } from 'react-router-dom'
 
 export default function TopNav() {
-    const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        Mind Muscle
-          </Typography>
-                </Toolbar>
-            </AppBar>
+
+        <div class="top-nav">
+            <div class="header">
+                <div class="glass"></div>
+                <div class="header-content">
+                    <header >
+                        <Link class="header-link" to="/">
+                            <h1 class="header-text">Mind </h1> <img class="header-logo" src="/images/logo.png" /> <h1 class="header-text"> Muscle</h1>
+                        </Link>
+                    </header>
+                </div>
+                <SiteInfo />
+            </div>
         </div>
     );
 }

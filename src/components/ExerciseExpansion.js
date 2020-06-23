@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -9,78 +10,72 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        marginTop: "10px"
+        marginTop: "10px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
     },
-    heading: {
+    headingbeginner: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        color: "white"
         // backgroundColor: "red"
     },
-    difficulty: {
-        backgroundColor: "red",
-        borderRadius: 4
-
+    headingintermediate: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+        color: "black"
+        // backgroundColor: "red"
     },
-    exercise: {
+    headingadvanced: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+        color: "white"
+        // backgroundColor: "red"
+    },
+    dropdown: {
         marginBottom: 15,
         borderRadius: 4,
         boxShadow: "10px"
     },
+    details: {
+        display: "flex",
+        flexDirection: "column",
+    },
 }));
 
-export default function SimpleExpansionPanel() {
+export default function SimpleExpansionPanel(props) {
     const classes = useStyles();
+    const exercises = useSelector(state => state.Exercises)
+    const muscle = useSelector(state => state.Muscle)
+    const workoutplan = useSelector(state => state.WorkoutPlans)
 
     return (
         <div className={classes.root}>
-            <ExpansionPanel className={classes.exercise}>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className={classes.difficulty}
-                >
-                    <Typography className={classes.heading}>Exercise 1</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        Sets: 4
-                        Reps: 8, 8, 10, 12
-          </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel className={classes.exercise}>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className={classes.difficulty}
-                >
-                    <Typography className={classes.heading}>Exercise 2</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        Sets: 3
-                        Reps: 8, 10, 12
-          </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel className={classes.exercise}>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className={classes.difficulty}
-                >
-                    <Typography className={classes.heading}>Exercise 3</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        Sets: 3
-                        Reps: 12, 12, 12
-          </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+            {/* <p>{workoutplan[Object.values(exercises)[0].WorkoutName].description}</p> */}
+
+            {Object.values(exercises).map(exercise => (
+                <div class={`exercise-container exercise-container-${exercise.difficulty.toLowerCase()}`}>
+                    <div class="card">
+                        <div class="exerciseImg">
+                            <img src={`/images/${muscle.name.toLowerCase()}.png`} />
+                        </div>
+                        <div class="exercise-content">
+                            <h2>{exercise.name}</h2>
+                            <div class="exercise-sets">
+                                <h3>Sets :</h3>
+                                <span>{exercise.sets}</span>
+                            </div>
+                            <div class="exercise-reps">
+                                <h3>Reps :</h3>
+                                <span>{exercise.reps}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            ))}
         </div>
     );
 }
