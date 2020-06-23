@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 export default function SiteInfo() {
     const siteCurtain = useRef(null);
     const history = useHistory();
+    const user = useSelector(state => state.User)
 
     const handleClick = (e) => {
         siteCurtain.current.classList.toggle('active')
@@ -12,13 +14,25 @@ export default function SiteInfo() {
     const handleLogin = (e) => {
         history.push('/login')
     }
+    const handleLogout = (e) => {
+        history.push('/')
+    }
     const handleMacros = (e) => {
         history.push('/macros')
+    }
+
+    const userState = (e) => {
+        if (user.id === undefined) {
+            return (<p class="login" onClick={handleLogin}>LogIn</p>)
+        }
+        else {
+            return (<p class="login" onClick={handleLogout}>LogOut</p>)
+        }
     }
     return (
         <>
             <p class="macros" onClick={handleMacros}>Macros</p>
-            <p class="login" onClick={handleLogin}>LogIn</p>
+            {userState()}
             <InfoOutlinedIcon class="icon" onClick={handleClick} />
             <div ref={siteCurtain} id="curtain">
                 <span></span>

@@ -1,5 +1,5 @@
 import {
-    RETRIEVE_MUSCLE
+    RETRIEVE_MUSCLE, RESET_MUSCLE
 } from "./muscleActions";
 
 const initialState = {
@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
         case RETRIEVE_MUSCLE:
             return {
                 ...action.payload.data,
+            };
+        case RESET_MUSCLE:
+            return {
+                workoutplans: []
             };
 
         default:
