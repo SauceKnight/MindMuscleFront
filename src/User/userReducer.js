@@ -3,8 +3,12 @@ import {
 } from "./userActions";
 
 import {
-    RETRIEVE_EXERCISES
+    RETRIEVE_EXERCISES,
 } from "../Exercise/exerciseActions";
+
+import {
+    RESET_MUSCLE
+} from "../Muscle/muscleActions";
 
 const initialState = {
 };
@@ -12,6 +16,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case RETRIEVE_USER:
+            localStorage.setItem("id", action.payload.id)
+            localStorage.setItem("username", action.payload.username)
             return {
                 ...action.payload,
             };
@@ -19,6 +25,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload.SelectedWorkout,
+            };
+        case RESET_MUSCLE:
+            return {
+
             };
 
         default:

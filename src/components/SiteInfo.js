@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import { reset } from '../Muscle/muscleActions'
 
 export default function SiteInfo() {
     const siteCurtain = useRef(null);
     const history = useHistory();
     const user = useSelector(state => state.User)
+    const dispatch = useDispatch()
 
     const handleClick = (e) => {
         siteCurtain.current.classList.toggle('active')
@@ -15,6 +17,9 @@ export default function SiteInfo() {
         history.push('/login')
     }
     const handleLogout = (e) => {
+        dispatch(reset())
+        localStorage.removeItem("id")
+        localStorage.removeItem("username")
         history.push('/')
     }
     const handleMacros = (e) => {
