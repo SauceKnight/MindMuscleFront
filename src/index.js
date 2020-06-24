@@ -6,7 +6,21 @@ import configureStore from "./store/configureStore";
 import './index.css';
 import App from './App';
 
-let store = configureStore();
+
+let store;
+
+if (localStorage.getItem("id") && localStorage.getItem("username")) {
+  let user = {};
+  user["id"] = localStorage.getItem("id");
+  user["username"] = localStorage.getItem("username");
+  const preState = { User: user }
+  store = configureStore(preState)
+}
+else {
+  store = configureStore();
+}
+
+
 
 ReactDOM.render(
   <React.StrictMode>

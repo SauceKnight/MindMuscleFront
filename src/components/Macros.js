@@ -46,7 +46,7 @@ export default function Macros() {
         if (calories) {
             return (
                 <div class="macros-input ">
-                    <p>You need to burn these many calories {calories}. You are a {gender}. You want to {goal} weight.
+                    <p class="macros-result">You need to burn these many calories {calories}. You are a {gender}. You want to {goal} weight.
                     </p>
                 </div>)
         }

@@ -12,6 +12,7 @@ function MainPage() {
     const history = useHistory();
     const dispatch = useDispatch();
     const muscle = useSelector(state => state.Muscle)
+    const workoutplans = useSelector(state => state.WorkoutPlans)
 
     const [value, updateValue] = useState("");
 

@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ReviewForm from './ReviewForm'
+import DisplayReviews from './DisplayReviews';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,33 +12,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-    },
-    headingbeginner: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
-        color: "white"
-        // backgroundColor: "red"
-    },
-    headingintermediate: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
-        color: "black"
-        // backgroundColor: "red"
-    },
-    headingadvanced: {
-        fontSize: theme.typography.pxToRem(15),
-        fontWeight: theme.typography.fontWeightRegular,
-        color: "white"
-        // backgroundColor: "red"
-    },
-    dropdown: {
-        marginBottom: 15,
-        borderRadius: 4,
-        boxShadow: "10px"
-    },
-    details: {
-        display: "flex",
-        flexDirection: "column",
+        marginBottom: "10px"
     },
 }));
 
@@ -50,6 +21,22 @@ export default function SimpleExpansionPanel(props) {
     const exercises = useSelector(state => state.Exercises)
     const muscle = useSelector(state => state.Muscle)
     const workoutplan = useSelector(state => state.WorkoutPlans)
+
+    const totalReps = (sets, reps) => {
+        let i = 0;
+        let repeat = []
+        while (i < sets) {
+            repeat.push(1)
+            i++;
+        }
+        return (repeat.map(rep => (
+            <span>{reps}</span>
+        )))
+    };
+
+    if (Object.keys(exercises).length === 0) {
+        return null;
+    }
 
     return (
         <div className={classes.root}>
@@ -69,13 +56,18 @@ export default function SimpleExpansionPanel(props) {
                             </div>
                             <div class="exercise-reps">
                                 <h3>Reps :</h3>
-                                <span>{exercise.reps}</span>
+                                {totalReps(exercise.sets, exercise.reps)}
                             </div>
                         </div>
                     </div>
                 </div>
 
             ))}
+            <div class="review-section">
+                <h2>Reviews</h2>
+                <ReviewForm />
+            </div>
+            <DisplayReviews />
         </div>
     );
 }
