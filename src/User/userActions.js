@@ -1,3 +1,4 @@
+import { API } from '../config';
 export const RETRIEVE_USER = "RETRIEVE_USER";
 
 
@@ -10,7 +11,7 @@ export const setUser = (user) => {
 
 
 export const login = (username, password) => async (dispatch) => {
-    const response = await fetch(`http://localhost:5000/login`, {
+    const response = await fetch(`${API}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -22,7 +23,7 @@ export const login = (username, password) => async (dispatch) => {
 };
 
 export const register = (email, username, password) => async (dispatch) => {
-    const response = await fetch(`http://localhost:5000/signup`, {
+    const response = await fetch(`${API}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, username, password }),
