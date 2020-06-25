@@ -1,3 +1,4 @@
+import { API } from '../config';
 export const RETRIEVE_MUSCLE = "RETRIEVE_MUSCLE";
 export const RESET_MUSCLE = "RESET_MUSCLE";
 
@@ -18,7 +19,7 @@ export const resetMuscle = () => {
 
 export const getMuscle = (muscleid) => async (dispatch) => {
     const response = await fetch(
-        `http://localhost:5000/${muscleid}`
+        `${API}/${muscleid}`
     );
     if (response.ok) {
         const res = await response.json();

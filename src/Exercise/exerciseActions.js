@@ -1,3 +1,4 @@
+import { API } from '../config';
 export const RETRIEVE_EXERCISES = "RETRIEVE_EXERCISES";
 
 
@@ -11,7 +12,7 @@ export const fetchExercises = (exercises) => {
 
 export const getExercises = (workoutid) => async (dispatch) => {
     const response = await fetch(
-        `http://localhost:5000/${workoutid}/exercises`
+        `${API}/${workoutid}/exercises`
     );
     if (response.ok) {
         const res = await response.json();
