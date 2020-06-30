@@ -18,10 +18,10 @@ export default function Macros() {
 
     const handleCalculate = (e) => {
         if (weight && height && age && (gender === "Male")) {
-            return setCalories(66 + (6.2 * weight) + (12.7 * height) - (6.76 * age) + active);
+            return setCalories(66 + (6.2 * weight) + (12.7 * height) - (6.76 * age));
         }
         else if (weight && height && age && (gender === "Female")) {
-            return setCalories(655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age) + active);
+            return setCalories(655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age));
         }
         else {
             return null;
@@ -51,10 +51,10 @@ export default function Macros() {
     }
 
     const calorieResult = (e) => {
-        if (calories) {
+        if (calories && (goal === "Gain")) {
             return (
                 <div class="macros-input ">
-                    <p class="macros-result">You need to burn these many calories {calories}. You are a {gender}. You want to {goal} weight.
+                    <p class="macros-result">You currently burn approximately {calories} calories throughout a day. After adding the active calories you come to a total of {calories + active} calories. In order to gain approximately 1lb a day you need to have a caloric surplus of 500 calories. There for you need to eat approximately {calories + active + 500} calories a day.
                     </p>
                 </div>)
         }
