@@ -76,7 +76,7 @@ export default function Macros() {
                     <div class="macros-form-data">
                         <div class="macros-input w50">
                             <input type="text" name="" onChange={updateHeight} required />
-                            <span onChange={updateHeight}>Height</span>
+                            <span onChange={updateHeight}>Height(inches)</span>
                         </div>
                         <div class="macros-input w50">
                             <input type="text" name="" required onChange={updateWeight} />
@@ -85,6 +85,10 @@ export default function Macros() {
                         <div class="macros-input w50">
                             <input type="text" name="" required onChange={updateAge} />
                             <span>Age</span>
+                        </div>
+                        <div class="macros-input w50">
+                            <input type="text" name="" required onChange={updateAge} />
+                            <span>ActiveCalories</span>
                         </div>
                         <div class="macros-input w100">
                             <input type="submit" value="Calculate" onClick={handleCalculate} />
