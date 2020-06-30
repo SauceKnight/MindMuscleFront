@@ -7,6 +7,7 @@ export default function Macros() {
     const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
+    const [active, setActive] = useState(0);
     const [gender, setGender] = useState("Male");
     const [goal, setGoal] = useState("Gain");
     const [calories, setCalories] = useState("");
@@ -16,8 +17,11 @@ export default function Macros() {
     }, [gender, goal]);
 
     const handleCalculate = (e) => {
-        if (weight && height && age) {
-            return setCalories(age + weight + height);
+        if (weight && height && age && (gender === "Male")) {
+            return setCalories(66 + (6.2 * weight) + (12.7 * height) - (6.76 * age) + active);
+        }
+        else if (weight && height && age && (gender === "Female")) {
+            return setCalories(655.1 + (4.35 * weight) + (4.7 * height) - (4.7 * age) + active);
         }
         else {
             return null;
@@ -34,6 +38,10 @@ export default function Macros() {
 
     const updateHeight = (e) => {
         setHeight(parseInt(e.target.value));
+    }
+
+    const updateActive = (e) => {
+        setActive(parseInt(e.target.value));
     }
     const updateGender = (mof) => {
         setGender(mof);
@@ -87,7 +95,7 @@ export default function Macros() {
                             <span>Age</span>
                         </div>
                         <div class="macros-input w50">
-                            <input type="text" name="" required onChange={updateAge} />
+                            <input type="text" name="" required onChange={updateActive} />
                             <span>ActiveCalories</span>
                         </div>
                         <div class="macros-input w100">
