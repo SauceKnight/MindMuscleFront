@@ -54,14 +54,14 @@ export default function Macros() {
         if (calories && (goal === "Gain")) {
             return (
                 <div class="macros-input ">
-                    <p class="macros-result">You currently burn approximately {calories} calories throughout a day. After adding the active calories you come to a total of {calories + active} calories. In order to gain approximately 1lb a day you need to have a caloric surplus of 500 calories. There for you need to eat approximately {calories + active + 500} calories a day.
+                    <p class="macros-result">You currently burn approximately {calories} calories throughout a day. After adding the active calories you come to a total of {calories + active} calories. In order to gain approximately 1lb a week you need to have a caloric surplus of 500 calories. There for you need to eat approximately {calories + active + 500} calories a day.
                     </p>
                 </div>)
         }
         else if (calories && (goal === "Lose")) {
             return (
                 <div class="macros-input ">
-                    <p class="macros-result">You currently burn approximately {calories} calories throughout a day. After adding the active calories you come to a total of {calories + active} calories. In order to lose approximately 1lb a day you need to have a caloric deficit of 500 calories. There for you need to eat approximately {calories + active - 500} calories a day.
+                    <p class="macros-result">You currently burn approximately {calories} calories throughout a day. After adding the active calories you come to a total of {calories + active} calories. In order to lose approximately 1lb a week you need to have a caloric deficit of 500 calories. There for you need to eat approximately {calories + active - 500} calories a day.
                     </p>
                 </div>)
         }
