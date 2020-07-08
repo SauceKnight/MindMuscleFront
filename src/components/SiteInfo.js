@@ -36,7 +36,7 @@ export default function SiteInfo() {
     }
     return (
         <>
-            <p class="macros" onClick={handleMacros}>Macros</p>
+            <p class="macros" onClick={handleMacros}>Calories</p>
             {userState()}
             <InfoOutlinedIcon class="icon" onClick={handleClick} />
             <div ref={siteCurtain} id="curtain">
