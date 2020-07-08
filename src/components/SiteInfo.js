@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import { reset } from '../Muscle/muscleActions'
+import { resetUser } from '../User/userActions'
 
 export default function SiteInfo() {
     const siteCurtain = useRef(null);
@@ -17,7 +17,7 @@ export default function SiteInfo() {
         history.push('/login')
     }
     const handleLogout = (e) => {
-        dispatch(reset())
+        dispatch(resetUser())
         localStorage.removeItem("id")
         localStorage.removeItem("username")
         history.push('/')

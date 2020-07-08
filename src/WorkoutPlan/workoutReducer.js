@@ -2,6 +2,8 @@ import {
     RETRIEVE_MUSCLE, RESET_MUSCLE
 } from "../Muscle/muscleActions";
 
+import { RESET_USER } from '../User/userActions'
+
 const initialState = {
 
 };
@@ -13,6 +15,10 @@ const reducer = (state = initialState, action) => {
                 ...action.payload.WorkoutPlans,
             };
         case RESET_MUSCLE:
+            return {
+
+            };
+        case RESET_USER:
             return {
 
             };
